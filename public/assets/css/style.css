@@ -913,6 +913,14 @@
                 display: none !important;
             }
 
+            .hero-video-stage video,
+            .hero-video-stage canvas {
+                object-fit: cover !important;
+                object-position: center center !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+
             .hud-bottom-telemetry {
                 display: none !important;
             }
