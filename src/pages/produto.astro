@@ -9,7 +9,7 @@ const defaultProduct = products[1] || products[0];
 ---
 
 <Layout
-    title={`${defaultProduct.name} | Detalhes do Produto — Artools PRO`}
+    title={`${defaultProduct.name} | Detalhes do Produto — Arttools PRO`}
     description={`Galeria de fotos e especificações de compra do instrumento ${defaultProduct.code} ${defaultProduct.name}.`}
 >
     <main class="page-white-bg">
@@ -342,7 +342,7 @@ const defaultProduct = products[1] || products[0];
             function renderProduct(p) {
                 if (!p) return;
                 currentProduct = p;
-                document.title = `${p.name} | Detalhes do Produto — Artools PRO`;
+                document.title = `${p.name} | Detalhes do Produto — Arttools PRO`;
 
                 if (crumbActive) crumbActive.textContent = p.name.toUpperCase();
                 if (mainImg) {
