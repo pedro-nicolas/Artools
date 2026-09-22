@@ -432,6 +432,9 @@
                     // Parallax & Subtle Zoom on the background video
                     const bgVideo = sigSection.querySelector('.signature-bg-video');
                     if (bgVideo) {
+                        bgVideo.muted = true;
+                        bgVideo.defaultMuted = true;
+                        bgVideo.volume = 0;
                         gsap.fromTo(bgVideo,
                             { scale: 1.08, filter: 'brightness(0.92) contrast(1.04)' },
                             {
