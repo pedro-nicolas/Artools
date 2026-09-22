@@ -977,15 +977,16 @@
             }
 
             .features-title {
-                font-size: 1.35rem;
+                font-size: clamp(1.2rem, 5.2vw, 1.45rem);
                 line-height: 1.2;
                 margin-bottom: 0.5rem;
-                white-space: nowrap;
+                white-space: normal;
             }
 
+            .features-title .title-line,
             .features-title .tech-stroke {
+                display: block;
                 white-space: nowrap;
-                display: inline-block;
             }
 
             .features-description {
@@ -1058,6 +1059,10 @@
             letter-spacing: 0.025em;
             color: var(--stone-dark);
             margin-bottom: 0.65rem;
+        }
+
+        .features-title .title-line {
+            display: block;
         }
 
         .features-description {
