@@ -1,0 +1,46 @@
+---
+// Button.astro - Componente Reutilizável de Botão para o Artools PRO
+interface Props {
+  variant?: 'primary' | 'secondary' | 'header' | 'beam' | 'signature' | 'step-nav' | 'notify';
+  href?: string;
+  id?: string;
+  type?: 'button' | 'submit' | 'reset';
+  ariaLabel?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  variant = 'primary',
+  href,
+  id,
+  type = 'button',
+  ariaLabel,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const variantClasses: Record<string, string> = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  header: 'header-btn',
+  beam: 'haptic-action-btn',
+  signature: 'card-cta-button',
+  'step-nav': 'step-nav-btn',
+  notify: 'btn-notify',
+};
+
+const computedClass = [variantClasses[variant] || 'btn-primary', className].filter(Boolean).join(' ');
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  href={href}
+  id={id}
+  type={!href ? type : undefined}
+  class={computedClass}
+  aria-label={ariaLabel}
+  {...rest}
+>
+  <slot />
+</Tag>

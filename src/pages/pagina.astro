@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import { products as pens } from '../data/products';
+---
+
+<Layout title="Catálogo de Instrumentos | Artools PRO" description="Coleção compacta de 9 instrumentos de escrita de precisão em titânio e cerâmica.">
+
+    <main class="catalog-page">
+        <!-- Minimal Header -->
+        <header class="catalog-header">
+            <div class="catalog-container">
+                <div class="catalog-badge">
+                    <span class="badge-dot" aria-hidden="true"></span>
+                    <span>COLEÇÃO // 9 MODELOS EXCLUSIVOS</span>
+                </div>
+                <h1 class="catalog-title">
+                    Catálogo de Instrumentos
+                </h1>
+                <p class="catalog-subtitle">
+                    9 modelos distintos forjados em titânio aeroespacial, cerâmica e ligas nobres.
+                </p>
+            </div>
+        </header>
+
+        <!-- 3x3 Cards Grid -->
+        <section class="catalog-container" aria-label="Lista de Instrumentos">
+            <div class="catalog-grid">
+                {pens.map((pen, index) => (
+                    <article class="product-card">
+                        <!-- Imagem com badge de código e link para detalhes -->
+                        <a href={`/produto?id=${pen.id}`} class="product-card-media" aria-label={`Ver detalhes de ${pen.name}`}>
+                            <span class="product-code-badge">{pen.code}</span>
+                            <img
+                                src={pen.image}
+                                alt={`Caneta ${pen.code} ${pen.name}`}
+                                loading={index < 3 ? 'eager' : 'lazy'}
+                            />
+                        </a>
+
+                        <!-- Corpo do Card -->
+                        <div class="product-card-body">
+                            <div class="product-card-header">
+                                <a href={`/produto?id=${pen.id}`} class="product-card-title-link">
+                                    <h2 class="product-card-title">{pen.name}</h2>
+                                </a>
+                                <span class="product-card-material">{pen.material}</span>
+                            </div>
+
+                            <p class="product-card-utility">{pen.utility}</p>
+
+                            <!-- Especificações em texto livre: Esquerda, Centro e Direita -->
+                            <div class="product-card-specs-row">
+                                <span class="spec-item-left">{pen.tip}</span>
+                                <span class="spec-item-center">{pen.weight}</span>
+                                <span class="spec-item-right">{pen.balance}</span>
+                            </div>
+
+                            <div class="product-card-action">
+                                <Button
+                                    variant="notify"
+                                    href={`/produto?id=${pen.id}`}
+                                    ariaLabel={`Avise-me sobre ${pen.name}`}
+                                >
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                    </svg>
+                                    <span>Avise-me</span>
+                                </Button>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </section>
+    </main>
+</Layout>
