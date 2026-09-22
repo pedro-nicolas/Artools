@@ -29,36 +29,38 @@ const defaultProduct = products[1] || products[0];
                      COLUNA ESQUERDA: GALERIA DE FOTOS + ITENS INCLUSOS ABAIXO
                      ============================================================== -->
                 <div class="product-gallery-column">
-                    <!-- Moldura da Imagem Principal com Badges -->
-                    <div class="product-hero-frame">
-                        <div class="frame-badges-overlay">
-                            <span class="badge-pill badge-dark" id="hero-badge-left">NOVO LANÇAMENTO</span>
-                            <span class="badge-pill badge-light" id="hero-badge-right">{defaultProduct.status.toUpperCase()}</span>
+                    <div class="product-gallery-wrapper">
+                        <!-- Moldura da Imagem Principal com Badges -->
+                        <div class="product-hero-frame">
+                            <div class="frame-badges-overlay">
+                                <span class="badge-pill badge-dark" id="hero-badge-left">NOVO LANÇAMENTO</span>
+                                <span class="badge-pill badge-light" id="hero-badge-right">{defaultProduct.status.toUpperCase()}</span>
+                            </div>
+
+                            <div class="hero-image-wrapper">
+                                <img
+                                    id="gallery-main-img"
+                                    src={defaultProduct.image}
+                                    alt={`Instrumento ${defaultProduct.name}`}
+                                />
+                            </div>
                         </div>
 
-                        <div class="hero-image-wrapper">
-                            <img
-                                id="gallery-main-img"
-                                src={defaultProduct.image}
-                                alt={`Instrumento ${defaultProduct.name}`}
-                            />
+                        <!-- Miniaturas das Fotos (4 Quadrados) -->
+                        <div class="gallery-thumbs-row" aria-label="Miniaturas de fotos">
+                            <button type="button" class="thumb-square active" data-img="/assets/images/pen_stealth.jpg" aria-label="Foto 1: Titanium Stealth">
+                                <img src="/assets/images/pen_stealth.jpg" alt="Acabamento Titânio" />
+                            </button>
+                            <button type="button" class="thumb-square" data-img="/assets/images/pen_ceramic.jpg" aria-label="Foto 2: Ceramic White">
+                                <img src="/assets/images/pen_ceramic.jpg" alt="Acabamento Cerâmica Branca" />
+                            </button>
+                            <button type="button" class="thumb-square" data-img="/assets/images/pen_blue.jpg" aria-label="Foto 3: Cobalt Aero">
+                                <img src="/assets/images/pen_blue.jpg" alt="Versão Azul Cobalto" />
+                            </button>
+                            <button type="button" class="thumb-square" data-img="/assets/images/pen_silver.jpg" aria-label="Foto 4: Flux Silver">
+                                <img src="/assets/images/pen_silver.jpg" alt="Versão Prata Escovada" />
+                            </button>
                         </div>
-                    </div>
-
-                    <!-- Miniaturas das Fotos (4 Quadrados) -->
-                    <div class="gallery-thumbs-row" aria-label="Miniaturas de fotos">
-                        <button type="button" class="thumb-square active" data-img="/assets/images/pen_stealth.jpg" aria-label="Foto 1: Titanium Stealth">
-                            <img src="/assets/images/pen_stealth.jpg" alt="Acabamento Titânio" />
-                        </button>
-                        <button type="button" class="thumb-square" data-img="/assets/images/pen_ceramic.jpg" aria-label="Foto 2: Ceramic White">
-                            <img src="/assets/images/pen_ceramic.jpg" alt="Acabamento Cerâmica Branca" />
-                        </button>
-                        <button type="button" class="thumb-square" data-img="/assets/images/pen_blue.jpg" aria-label="Foto 3: Cobalt Aero">
-                            <img src="/assets/images/pen_blue.jpg" alt="Versão Azul Cobalto" />
-                        </button>
-                        <button type="button" class="thumb-square" data-img="/assets/images/pen_silver.jpg" aria-label="Foto 4: Flux Silver">
-                            <img src="/assets/images/pen_silver.jpg" alt="Versão Prata Escovada" />
-                        </button>
                     </div>
 
                     <!-- ITENS INCLUSOS ABAIXO DAS IMAGENS (conforme solicitado pelo usuário) -->
@@ -81,17 +83,19 @@ const defaultProduct = products[1] || products[0];
                      COLUNA DIREITA: INFORMAÇÕES DE COMPRA + AVISE-ME
                      ============================================================== -->
                 <div class="product-purchase-column">
-                    <!-- Pre-título em Pill Badge com bolinha verde -->
-                    <div class="purchase-eyebrow">
-                        <span class="badge-dot" aria-hidden="true"></span>
-                        <span id="purchase-eyebrow-text">PRECISÃO & ENGENHARIA</span>
+                    <div class="purchase-header-block">
+                        <!-- Pre-título em Pill Badge com bolinha verde -->
+                        <div class="purchase-eyebrow">
+                            <span class="badge-dot" aria-hidden="true"></span>
+                            <span id="purchase-eyebrow-text">PRECISÃO & ENGENHARIA</span>
+                        </div>
+
+                        <!-- Título da Caneta -->
+                        <h1 class="purchase-title" id="purchase-product-title">{defaultProduct.name}</h1>
+
+                        <!-- Descrição Breve -->
+                        <p class="purchase-brief-desc" id="purchase-brief-desc">{defaultProduct.utility}</p>
                     </div>
-
-                    <!-- Título da Caneta -->
-                    <h1 class="purchase-title" id="purchase-product-title">{defaultProduct.name}</h1>
-
-                    <!-- Descrição Breve -->
-                    <p class="purchase-brief-desc" id="purchase-brief-desc">{defaultProduct.utility}</p>
 
                     <!-- Preço Exclusivo e Lote Futuro -->
                     <div class="purchase-pricing-row">
@@ -610,6 +614,58 @@ const defaultProduct = products[1] || products[0];
             .product-layout-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-layout-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .product-gallery-column,
+            .product-purchase-column {
+                display: contents;
+            }
+
+            /* 1 - Título e Descrição */
+            .purchase-header-block {
+                order: 1;
+            }
+
+            /* 2 - Galeria de Imagem */
+            .product-gallery-wrapper {
+                order: 2;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            /* 3 - Preço */
+            .purchase-pricing-row {
+                order: 3;
+            }
+
+            /* 4 - Especificações */
+            .quick-specs-container {
+                order: 4;
+            }
+
+            /* 5 - Selecionar Modelo */
+            .model-selection-wrapper {
+                order: 5;
+            }
+
+            /* 6 - Botão Avise-me */
+            .action-submit-area {
+                order: 6;
+            }
+
+            /* 7 - Itens Inclusos */
+            .inbox-section-below {
+                order: 7;
             }
         }
 
