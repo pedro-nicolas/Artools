@@ -4,7 +4,12 @@ import Button from '../components/Button.astro';
 import TextType from '../components/TextType.astro';
 ---
 
-<Layout title="Arttools PRO">
+<Layout
+    title="AR|P1 ArtTools — Caneta de Precisão em Titânio Aeroespacial"
+    description="Conheça a AR|P1 da ArtTools: a caneta mais tecnológica do mundo. Engenharia giroscópica suíça, chassi em Titânio Grau 5 e ponta cerâmica para máxima precisão."
+    canonicalURL={new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href}
+    image="/assets/images/pen_carbon.jpg"
+>
     <!-- 2. PINNED HERO SECTION (Full-Bleed Centerpiece + Pinned Scroll Scrub) -->
     <main>
         <section class="hero-pin-container" id="hero-pin-container" aria-label="Apresentação da Caneta AR|P1">
@@ -499,7 +504,7 @@ import TextType from '../components/TextType.astro';
                 aria-hidden="true"></span>
             <!-- Background Ambient Video Layer -->
             <div class="signature-video-stage" aria-hidden="true">
-                <video class="signature-bg-video" autoplay muted defaultmuted loop playsinline preload="auto">
+                <video class="signature-bg-video" autoplay muted loop playsinline preload="auto">
                     <source src="/assets/videos/output.mp4" type="video/mp4" />
                 </video>
             </div>

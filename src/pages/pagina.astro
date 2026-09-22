@@ -4,7 +4,12 @@ import Button from '../components/Button.astro';
 import { products as pens } from '../data/products';
 ---
 
-<Layout title="Catálogo de Instrumentos | Arttools PRO" description="Coleção compacta de 9 instrumentos de escrita de precisão em titânio e cerâmica.">
+<Layout
+    title="Coleção Completa de Instrumentos de Escrever | ArtTools"
+    description="Explore a coleção exclusiva de 9 modelos de canetas ArtTools. Instrumentos de escrita de precisão forjados em titânio aeroespacial e cerâmica sinterizada."
+    canonicalURL={new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href}
+    image="/assets/images/pen_ceramic.jpg"
+>
 
     <main class="catalog-page">
         <!-- Minimal Header -->

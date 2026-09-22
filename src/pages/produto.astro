@@ -9,8 +9,10 @@ const defaultProduct = products[1] || products[0];
 ---
 
 <Layout
-    title={`${defaultProduct.name} | Detalhes do Produto — Arttools PRO`}
-    description={`Galeria de fotos e especificações de compra do instrumento ${defaultProduct.code} ${defaultProduct.name}.`}
+    title={`${defaultProduct.name} | Avise-me Quando Disponível — ArtTools`}
+    description={`Conheça a caneta ${defaultProduct.name} (${defaultProduct.code}) em ${defaultProduct.material}. Inscreva-se para receber o alerta de disponibilidade e lote exclusivo.`}
+    canonicalURL={new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href}
+    image={defaultProduct.image}
 >
     <main class="page-white-bg">
         <div class="product-page-container">
