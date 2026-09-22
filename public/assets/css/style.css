@@ -2796,7 +2796,7 @@
         .spec-item-center {
             text-align: center;
             flex: 1;
-            color: var(--stone-muted);
+            color: var(--stone-dark);
         }
 
         .spec-item-right {

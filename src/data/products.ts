@@ -130,44 +130,6 @@ export const products: PenProduct[] = [
     ]
   },
   {
-    id: 'AR-P3',
-    code: 'AR|P3',
-    name: 'Cobalt Aero',
-    material: 'Titânio Anodizado Azul',
-    image: '/assets/images/pen_blue.jpg',
-    utility: 'Grip texturizado com alta aderência para precisão sob pressão.',
-    tip: '0.50 mm',
-    weight: '26.8 g',
-    balance: '43% CG',
-    price: 'R$ 1.980,00',
-    status: 'Lote 01 Esgotado — Próxima Tiragem',
-    dimensions: '143.0 mm × 9.9 mm',
-    finish: 'Anodização eletrolítica em gradiente azul cobalto',
-    mechanism: 'Bloqueio rotativo micrométrico',
-    tolerance: '± 0.002 mm',
-    description: 'Tratamento eletroquímico de anodização por espectro controlado em tom cobalto profundo. O grip possui micro-recartilhado em espiral logarítmica para tração ideal em qualquer posição de pegada.',
-    features: [
-      {
-        title: 'Anodização de Espectro Óptico',
-        description: 'Camada de óxido de titânio formada por eletrólise de precisão que refrata a luz sem uso de pigmentos sintéticos.'
-      },
-      {
-        title: 'Micro-recartilhado Logarítmico',
-        description: 'Usinagem espiralada de 0.08mm de profundidade que maximiza o coeficiente de atrito estático com os dedos.'
-      },
-      {
-        title: 'Reservatório Pressurizado',
-        description: 'Alimentação homogênea constante mesmo em vôo ou em posições invertidas de escrita.'
-      }
-    ],
-    inBox: [
-      '1× Caneta Mecânica AR|P3 Cobalt Aero',
-      '1× Estojo protetor em alumínio anodizado CNC',
-      '3× Refis de 0.50mm de alta durabilidade',
-      '1× Certificado metrológico individual'
-    ]
-  },
-  {
     id: 'AR-P4',
     code: 'AR|P4',
     name: 'Ceramic Chrono',

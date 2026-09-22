@@ -124,7 +124,9 @@ const defaultProduct = products[1] || products[0];
                     <!-- Seletor de Modelo (Cards com Nome e Status) -->
                     <div class="model-selection-wrapper">
                         <div class="selection-label">SELECIONE O MODELO</div>
-                        <div class="model-cards-row" id="model-selector-container">
+
+                        <!-- 1ª Linha: Apenas os 3 Modelos Iniciais -->
+                        <div class="model-cards-row" id="model-primary-row">
                             {products.slice(0, 3).map((p) => (
                                 <button
                                     type="button"
@@ -136,6 +138,39 @@ const defaultProduct = products[1] || products[0];
                                     <span class="model-select-status">{p.status}</span>
                                 </button>
                             ))}
+                        </div>
+
+                        <!-- Botão Ver mais / Ver menos posicionado diretamente abaixo da 1ª linha -->
+                        <div class="model-selection-footer">
+                            <button
+                                type="button"
+                                class="btn-toggle-more-models"
+                                id="toggle-more-models-btn"
+                                aria-expanded="false"
+                                aria-label="Alternar exibição de mais modelos"
+                            >
+                                <span class="toggle-text">Ver mais</span>
+                                <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Modelos Restantes: Revelados abaixo do botão ao clicar -->
+                        <div class="more-models-container" id="more-models-container" style="display: none;">
+                            <div class="model-cards-row">
+                                {products.slice(3).map((p) => (
+                                    <button
+                                        type="button"
+                                        class={`model-select-card ${p.id === defaultProduct.id ? 'active' : ''}`}
+                                        data-model-id={p.id}
+                                        aria-label={`Selecionar modelo ${p.name}`}
+                                    >
+                                        <span class="model-select-name">{p.name}</span>
+                                        <span class="model-select-status">{p.status}</span>
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
@@ -342,26 +377,20 @@ const defaultProduct = products[1] || products[0];
                 if (popupPenName) popupPenName.textContent = p.name;
 
                 // Atualiza seleção dos cards de modelo
-                const currentCards = document.querySelectorAll('.model-select-card');
-                let foundInCards = false;
-                currentCards.forEach((btn) => {
+                const allCards = document.querySelectorAll('.model-select-card');
+                allCards.forEach((btn) => {
                     const id = btn.getAttribute('data-model-id');
                     if (id === p.id) {
                         btn.classList.add('active');
-                        foundInCards = true;
                     } else {
                         btn.classList.remove('active');
                     }
                 });
 
-                if (!foundInCards && currentCards.length >= 3) {
-                    const thirdCard = currentCards[2];
-                    thirdCard.setAttribute('data-model-id', p.id);
-                    const nameEl = thirdCard.querySelector('.model-select-name');
-                    const statusEl = thirdCard.querySelector('.model-select-status');
-                    if (nameEl) nameEl.textContent = p.name;
-                    if (statusEl) statusEl.textContent = p.status;
-                    thirdCard.classList.add('active');
+                // Se o produto selecionado for dos modelos adicionais, abre o container
+                const targetIdx = products.findIndex(item => item.id === p.id);
+                if (targetIdx >= 3) {
+                    setExpanded(true);
                 }
 
                 // Sincroniza miniaturas ativas
@@ -375,6 +404,33 @@ const defaultProduct = products[1] || products[0];
                 });
             }
 
+            // Controle de Alternância: Expandir / Recolher Modelos ("Ver mais" / "Ver menos")
+            const toggleMoreBtn = document.getElementById('toggle-more-models-btn');
+            const moreModelsContainer = document.getElementById('more-models-container');
+            const toggleText = toggleMoreBtn ? toggleMoreBtn.querySelector('.toggle-text') : null;
+
+            function setExpanded(expand) {
+                if (!moreModelsContainer || !toggleMoreBtn) return;
+                if (expand) {
+                    moreModelsContainer.style.display = 'block';
+                    toggleMoreBtn.classList.add('active');
+                    toggleMoreBtn.setAttribute('aria-expanded', 'true');
+                    if (toggleText) toggleText.textContent = 'Ver menos';
+                } else {
+                    moreModelsContainer.style.display = 'none';
+                    toggleMoreBtn.classList.remove('active');
+                    toggleMoreBtn.setAttribute('aria-expanded', 'false');
+                    if (toggleText) toggleText.textContent = 'Ver mais';
+                }
+            }
+
+            if (toggleMoreBtn) {
+                toggleMoreBtn.addEventListener('click', () => {
+                    const isVisible = moreModelsContainer && moreModelsContainer.style.display !== 'none';
+                    setExpanded(!isVisible);
+                });
+            }
+
             // Checa Query Params da URL (ex: ?id=AR-P1)
             const params = new URLSearchParams(window.location.search);
             const queryId = params.get('id');
@@ -385,10 +441,10 @@ const defaultProduct = products[1] || products[0];
                 }
             }
 
-            // Seleção de Modelo via Delegação de Eventos
-            const modelCardsContainer = document.getElementById('model-selector-container');
-            if (modelCardsContainer) {
-                modelCardsContainer.addEventListener('click', (e) => {
+            // Seleção de Modelo via Delegação de Eventos no Wrapper
+            const modelWrapper = document.querySelector('.model-selection-wrapper');
+            if (modelWrapper) {
+                modelWrapper.addEventListener('click', (e) => {
                     const btn = e.target.closest('.model-select-card');
                     if (!btn) return;
                     const id = btn.getAttribute('data-model-id');
@@ -877,6 +933,60 @@ const defaultProduct = products[1] || products[0];
             grid-template-columns: repeat(3, 1fr);
             gap: 0.6rem;
             width: 100%;
+        }
+
+        .more-models-container {
+            display: none;
+            width: 100%;
+            margin-top: 0.15rem;
+            animation: fadeInModels 0.25s ease;
+        }
+
+        @keyframes fadeInModels {
+            from {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .model-selection-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 0.35rem;
+            width: 100%;
+        }
+
+        .btn-toggle-more-models {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: none;
+            border: none;
+            padding: 0.25rem 0.1rem;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #70706E;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .btn-toggle-more-models:hover {
+            color: #1C1C1C;
+        }
+
+        .btn-toggle-more-models .chevron-icon {
+            transition: transform 0.25s ease;
+            color: currentColor;
+        }
+
+        .btn-toggle-more-models.active .chevron-icon {
+            transform: rotate(180deg);
         }
 
         .model-select-card {
