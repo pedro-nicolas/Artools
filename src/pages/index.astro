@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+import TextType from '../components/TextType.astro';
 ---
 
 <Layout title="Arttools PRO">
@@ -150,7 +151,15 @@ import Button from '../components/Button.astro';
                     </div>
                     <h1 class="features-title">
                         Engenharia Suíça.<br />
-                        <span class="tech-stroke">Precisão Molecular.</span>
+                        <span class="tech-stroke">
+                            <TextType
+                                text={["Precisão Molecular.", "Engenharia Aeroespacial.", "Design Atemporal."]}
+                                typingSpeed={75}
+                                pauseDuration={2000}
+                                showCursor={true}
+                                cursorCharacter="|"
+                            />
+                        </span>
                     </h1>
                     <p class="features-description">
                         A AR|P1 transcende o ato mecânico da escrita. Forjada através de métodos aeroespaciais
@@ -178,7 +187,8 @@ import Button from '../components/Button.astro';
                         <div class="macro-viewport" id="macro-viewport">
                             <img src="/assets/images/pen_macro_zoom.jpg"
                                 alt="Macro em close-up extremo da ponta e do corpo da caneta AR|P1"
-                                class="macro-base-image" id="macro-base-img" />
+                                class="macro-base-image" id="macro-base-img"
+                                loading="lazy" />
 
                             <!-- Interactive Optical Magnifier Lens -->
                             <div class="macro-lens" id="macro-lens">
@@ -490,7 +500,7 @@ import Button from '../components/Button.astro';
             <!-- Background Ambient Video Layer -->
             <div class="signature-video-stage" aria-hidden="true">
                 <video class="signature-bg-video" autoplay muted loop playsinline preload="auto">
-                    <source src="/assets/videos/video.mp4" type="video/mp4" />
+                    <source src="/assets/videos/output.mp4" type="video/mp4" />
                 </video>
             </div>
 

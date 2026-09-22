@@ -42,6 +42,8 @@ const defaultProduct = products[1] || products[0];
                                     id="gallery-main-img"
                                     src={defaultProduct.image}
                                     alt={`Instrumento ${defaultProduct.name}`}
+                                    loading="eager"
+                                    fetchpriority="high"
                                 />
                             </div>
                         </div>
@@ -49,16 +51,16 @@ const defaultProduct = products[1] || products[0];
                         <!-- Miniaturas das Fotos (4 Quadrados) -->
                         <div class="gallery-thumbs-row" aria-label="Miniaturas de fotos">
                             <button type="button" class="thumb-square active" data-img="/assets/images/pen_stealth.jpg" aria-label="Foto 1: Titanium Stealth">
-                                <img src="/assets/images/pen_stealth.jpg" alt="Acabamento Titânio" />
+                                <img src="/assets/images/pen_stealth.jpg" alt="Acabamento Titânio" loading="lazy" />
                             </button>
                             <button type="button" class="thumb-square" data-img="/assets/images/pen_ceramic.jpg" aria-label="Foto 2: Ceramic White">
-                                <img src="/assets/images/pen_ceramic.jpg" alt="Acabamento Cerâmica Branca" />
+                                <img src="/assets/images/pen_ceramic.jpg" alt="Acabamento Cerâmica Branca" loading="lazy" />
                             </button>
                             <button type="button" class="thumb-square" data-img="/assets/images/pen_blue.jpg" aria-label="Foto 3: Cobalt Aero">
-                                <img src="/assets/images/pen_blue.jpg" alt="Versão Azul Cobalto" />
+                                <img src="/assets/images/pen_blue.jpg" alt="Versão Azul Cobalto" loading="lazy" />
                             </button>
                             <button type="button" class="thumb-square" data-img="/assets/images/pen_silver.jpg" aria-label="Foto 4: Flux Silver">
-                                <img src="/assets/images/pen_silver.jpg" alt="Versão Prata Escovada" />
+                                <img src="/assets/images/pen_silver.jpg" alt="Versão Prata Escovada" loading="lazy" />
                             </button>
                         </div>
                     </div>

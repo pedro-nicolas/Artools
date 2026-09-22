@@ -35,6 +35,7 @@ import { products as pens } from '../data/products';
                                 src={pen.image}
                                 alt={`Caneta ${pen.code} ${pen.name}`}
                                 loading={index < 3 ? 'eager' : 'lazy'}
+                                fetchpriority={index < 3 ? 'high' : 'auto'}
                             />
                         </a>
 
