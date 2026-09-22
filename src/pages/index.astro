@@ -36,7 +36,10 @@ import Button from '../components/Button.astro';
                         </span>
                         <span class="headline-line">
                             <span class="headline-inner delay-2">
-                                <span class="tech-stroke">mais tecnológica</span>
+                                <span class="tech-stroke">
+                                    <span class="tech-word">mais</span>
+                                    <span class="tech-word">tecnológica</span>
+                                </span>
                             </span>
                         </span>
                         <span class="headline-line">
@@ -52,21 +55,10 @@ import Button from '../components/Button.astro';
 
                     <!-- Call-To-Action Buttons -->
                     <div class="hero-actions">
-                        <Button variant="primary" href="/pagina" id="btn-comprar">
-                            <span>Comprar agora</span>
+                        <Button variant="primary" href="#diferenciais" id="btn-comprar">
+                            <span>Ver mais</span>
                             <span class="btn-icon-arrow" aria-hidden="true">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </span>
-                        </Button>
-
-                        <Button variant="secondary" href="#explorar" id="btn-explorar">
-                            <span>Explorar 360°</span>
-                            <span class="btn-icon-down" aria-hidden="true">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="12" y1="5" x2="12" y2="19"></line>
                                     <polyline points="19 12 12 19 5 12"></polyline>
@@ -591,4 +583,19 @@ import Button from '../components/Button.astro';
 
     </main>
 
+    <script>
+        const btnComprar = document.getElementById('btn-comprar');
+        if (btnComprar) {
+            btnComprar.addEventListener('click', (e) => {
+                const targetId = btnComprar.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        }
+    </script>
 </Layout>
