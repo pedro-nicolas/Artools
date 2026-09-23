@@ -2,9 +2,8 @@
 // Header.astro - Cabeçalho Fiel à Identidade Visual Artools PRO
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/" || pathname === "";
-const isCatalogo = pathname.startsWith("/pagina");
-const isProduto =
-    pathname.startsWith("/produto") || pathname.startsWith("/detalhes");
+const isCatalogo = pathname.startsWith("/catalogo");
+const isProduto = pathname.startsWith("/produto");
 ---
 
 <header class="site-header loaded" id="navbar" role="banner">
@@ -42,7 +41,7 @@ const isProduto =
                 </li>
                 <li>
                     <a
-                        href="/pagina"
+                        href="/catalogo"
                         class={`clean-nav-link ${isCatalogo ? "active" : ""}`}
                     >
                         CATÁLOGO
@@ -50,7 +49,7 @@ const isProduto =
                 </li>
                 <li>
                     <a
-                        href="/produto"
+                        href="/produto/ar-p1"
                         class={`clean-nav-link ${isProduto ? "active" : ""}`}
                     >
                         DETALHES DO PRODUTO

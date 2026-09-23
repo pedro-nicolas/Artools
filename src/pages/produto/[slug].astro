@@ -1,0 +1,405 @@
+---
+// [slug].astro - Detalhes do Produto Fiel à Identidade Visual Artools PRO
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import { products, type PenProduct } from '../../data/products';
+
+export async function getStaticPaths() {
+  return products.map((p) => ({
+    params: { slug: p.slug || p.id.toLowerCase() },
+    props: { product: p }
+  }));
+}
+
+const { slug } = Astro.params;
+const { product } = Astro.props as { product?: PenProduct };
+
+const defaultProduct = product || products.find(p => (p.slug || p.id).toLowerCase() === slug?.toLowerCase() || p.id.toLowerCase() === slug?.toLowerCase()) || products[0];
+---
+
+<Layout
+    title={`${defaultProduct.name} | Avise-me Quando Disponível — ArtTools`}
+    description={`Conheça a caneta ${defaultProduct.name} (${defaultProduct.code}) em ${defaultProduct.material}. Inscreva-se para receber o alerta de disponibilidade e lote exclusivo.`}
+    canonicalURL={new URL(Astro.url.pathname + (Astro.url.search || ''), Astro.site || Astro.url.origin).href}
+    image={defaultProduct.image}
+>
+    <main class="page-white-bg">
+        <div class="product-page-container">
+            <!-- Breadcrumbs -->
+            <nav class="product-breadcrumbs" aria-label="Navegação estrutural">
+                <a href="/" class="crumb-link">INÍCIO</a>
+                <span class="crumb-sep">/</span>
+                <a href="/catalogo" class="crumb-link">CATÁLOGO</a>
+                <span class="crumb-sep">/</span>
+                <span class="crumb-active" id="crumb-active-name">{defaultProduct.name.toUpperCase()}</span>
+            </nav>
+
+            <!-- Grid Principal de 2 Colunas -->
+            <section class="product-layout-grid" aria-label="Apresentação do Produto">
+                <!-- ==============================================================
+                     COLUNA ESQUERDA: GALERIA DE FOTOS + ITENS INCLUSOS ABAIXO
+                     ============================================================== -->
+                <div class="product-gallery-column">
+                    <div class="product-gallery-wrapper">
+                        <!-- Moldura da Imagem Principal com Badges -->
+                        <div class="product-hero-frame">
+                            <div class="frame-badges-overlay">
+                                <span class="badge-pill badge-dark" id="hero-badge-left">NOVO LANÇAMENTO</span>
+                                <span class="badge-pill badge-light" id="hero-badge-right">{defaultProduct.status.toUpperCase()}</span>
+                            </div>
+
+                            <div class="hero-image-wrapper">
+                                <img
+                                    id="gallery-main-img"
+                                    src={defaultProduct.image}
+                                    alt={`Instrumento ${defaultProduct.name}`}
+                                    loading="eager"
+                                    fetchpriority="high"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Miniaturas das Fotos (4 Quadrados) -->
+                        <div class="gallery-thumbs-row" aria-label="Miniaturas de fotos">
+                            <button type="button" class="thumb-square active" data-img="/assets/images/pen_stealth.jpg" aria-label="Foto 1: Titanium Stealth">
+                                <img src="/assets/images/pen_stealth.jpg" alt="Acabamento Titânio" loading="lazy" />
+                            </button>
+                            <button type="button" class="thumb-square" data-img="/assets/images/pen_ceramic.jpg" aria-label="Foto 2: Ceramic White">
+                                <img src="/assets/images/pen_ceramic.jpg" alt="Acabamento Cerâmica Branca" loading="lazy" />
+                            </button>
+                            <button type="button" class="thumb-square" data-img="/assets/images/pen_blue.jpg" aria-label="Foto 3: Cobalt Aero">
+                                <img src="/assets/images/pen_blue.jpg" alt="Versão Azul Cobalto" loading="lazy" />
+                            </button>
+                            <button type="button" class="thumb-square" data-img="/assets/images/pen_silver.jpg" aria-label="Foto 4: Flux Silver">
+                                <img src="/assets/images/pen_silver.jpg" alt="Versão Prata Escovada" loading="lazy" />
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ITENS INCLUSOS ABAIXO DAS IMAGENS (conforme solicitado pelo usuário) -->
+                    <div class="inbox-section-below">
+                        <h2 class="inbox-heading">ITENS INCLUSOS NO ESTOJO</h2>
+                        <ul class="inbox-bullet-list" id="inbox-items-list">
+                            {defaultProduct.inBox.map((item) => (
+                                <li>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ==============================================================
+                     COLUNA DIREITA: INFORMAÇÕES DE COMPRA + AVISE-ME
+                     ============================================================== -->
+                <div class="product-purchase-column">
+                    <div class="purchase-header-block">
+                        <!-- Pre-título em Pill Badge com bolinha verde -->
+                        <div class="purchase-eyebrow">
+                            <span class="badge-dot" aria-hidden="true"></span>
+                            <span id="purchase-eyebrow-text">PRECISÃO & ENGENHARIA</span>
+                        </div>
+
+                        <!-- Título da Caneta -->
+                        <h1 class="purchase-title" id="purchase-product-title">{defaultProduct.name}</h1>
+
+                        <!-- Descrição Breve -->
+                        <p class="purchase-brief-desc" id="purchase-brief-desc">{defaultProduct.utility}</p>
+                    </div>
+
+                    <!-- Preço Exclusivo e Lote Futuro -->
+                    <div class="purchase-pricing-row">
+                        <div class="price-stack">
+                            <span class="price-tiny-label">PREÇO EXCLUSIVO</span>
+                            <span class="price-main-val" id="purchase-price">{defaultProduct.price}</span>
+                        </div>
+                        <span class="batch-future-tag">LOTE FUTURO</span>
+                    </div>
+
+                    <!-- Especificações Rápidas e Minimalistas (3 Colunas no Box Cinza Claro) -->
+                    <div class="quick-specs-container">
+                        <div class="quick-specs-label">ESPECIFICAÇÕES RÁPIDAS</div>
+                        <div class="quick-specs-grid">
+                            <div class="quick-spec-item">
+                                <span class="spec-term">PENA</span>
+                                <span class="spec-def" id="spec-tip">{defaultProduct.tip}</span>
+                            </div>
+                            <div class="quick-spec-item">
+                                <span class="spec-term">MATERIAL</span>
+                                <span class="spec-def" id="spec-mat">{defaultProduct.material}</span>
+                            </div>
+                            <div class="quick-spec-item">
+                                <span class="spec-term">RECARGA</span>
+                                <span class="spec-def" id="spec-refill">{defaultProduct.refill || 'Rollerball G2'}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seletor de Modelo (Cards com Nome e Status) -->
+                    <div class="model-selection-wrapper">
+                        <div class="selection-label">SELECIONE O MODELO</div>
+
+                        <!-- 1ª Linha: Apenas os 3 Modelos Iniciais -->
+                        <div class="model-cards-row" id="model-primary-row">
+                            {products.slice(0, 3).map((p) => (
+                                <a
+                                    href={`/produto/${p.slug || p.id.toLowerCase()}`}
+                                    class={`model-select-card ${p.id === defaultProduct.id ? 'active' : ''}`}
+                                    data-model-id={p.id}
+                                    aria-label={`Selecionar modelo ${p.name}`}
+                                >
+                                    <span class="model-select-name">{p.name}</span>
+                                    <span class="model-select-status">{p.status}</span>
+                                </a>
+                            ))}
+                        </div>
+
+                        <!-- Botão Ver mais / Ver menos posicionado diretamente abaixo da 1ª linha -->
+                        <div class="model-selection-footer">
+                            <button
+                                type="button"
+                                class="btn-toggle-more-models"
+                                id="toggle-more-models-btn"
+                                aria-expanded="false"
+                                aria-label="Alternar exibição de mais modelos"
+                            >
+                                <span class="btn-toggle-text">Ver mais modelos (6)</span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-toggle-chevron">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- 2ª Linha (Escondida por padrão): Os 6 Modelos Restantes -->
+                        <div class="model-cards-row-more hidden" id="model-secondary-row">
+                            {products.slice(3).map((p) => (
+                                <a
+                                    href={`/produto/${p.slug || p.id.toLowerCase()}`}
+                                    class={`model-select-card ${p.id === defaultProduct.id ? 'active' : ''}`}
+                                    data-model-id={p.id}
+                                    aria-label={`Selecionar modelo ${p.name}`}
+                                >
+                                    <span class="model-select-name">{p.name}</span>
+                                    <span class="model-select-status">{p.status}</span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    <!-- Botão CTA Principal: AVISE-ME QUANDO DISPONÍVEL -->
+                    <div class="purchase-action-block">
+                        <Button
+                            variant="primary"
+                            id="open-aviseme-btn"
+                            ariaLabel="Abrir formulário de aviso de estoque"
+                        >
+                            <span>AVISE-ME QUANDO DISPONÍVEL</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                            </svg>
+                        </Button>
+                    </div>
+
+                    <!-- Selos de Garantia / Envio -->
+                    <div class="purchase-guarantees">
+                        <div class="guarantee-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            <span>Garantia Vitalícia Arttools Pro</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                            <span>Envio Seguro com Rastreamento VIP</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==============================================================
+                 ESPECIFICAÇÕES TÉCNICAS DETALHADAS (ABAJO)
+                 ============================================================== -->
+            <section class="product-specs-detailed-section" aria-label="Especificações Técnicas Completas">
+                <div class="specs-section-header">
+                    <h2 class="specs-section-title">ESPECIFICAÇÕES TÉCNICAS DE FABRICAÇÃO</h2>
+                    <span class="specs-section-subtitle">Normas metrológicas Suíça & Aeroespacial</span>
+                </div>
+
+                <div class="specs-table-grid">
+                    <div class="specs-table-col">
+                        <div class="spec-row">
+                            <span class="spec-key">Chassi & Liga</span>
+                            <span class="spec-val" id="spec-full-mat">{defaultProduct.material}</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-key">Mecânica de Trava</span>
+                            <span class="spec-val" id="spec-full-mech">{defaultProduct.mechanism}</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-key">Dimensões Físicas</span>
+                            <span class="spec-val" id="spec-full-dim">{defaultProduct.dimensions}</span>
+                        </div>
+                    </div>
+
+                    <div class="specs-table-col">
+                        <div class="spec-row">
+                            <span class="spec-key">Tratamento de Superfície</span>
+                            <span class="spec-val" id="spec-full-finish">{defaultProduct.finish}</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-key">Tolerância de Usinagem</span>
+                            <span class="spec-val" id="spec-full-tol">{defaultProduct.tolerance}</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-key">Peso & Balanço</span>
+                            <span class="spec-val" id="spec-full-weight">{defaultProduct.weight} ({defaultProduct.balance})</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Descrição Longa do Produto -->
+                <div class="product-long-description-box">
+                    <p id="product-full-description">
+                        {defaultProduct.description}
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ==============================================================
+         MODAL / POPUP: AVISE-ME QUANDO DISPONÍVEL
+         ============================================================== -->
+    <div class="aviseme-modal-backdrop hidden" id="aviseme-modal" role="dialog" aria-modal="true" aria-labelledby="popup-heading">
+        <div class="aviseme-modal-card">
+            <button type="button" class="modal-close-btn" id="close-modal-btn" aria-label="Fechar janela">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="modal-content-state" id="modal-form-state">
+                <div class="modal-eyebrow">
+                    <span class="badge-dot"></span>
+                    <span>LISTA VIP // LOTE EXCLUSIVO 2026</span>
+                </div>
+
+                <h2 class="popup-title" id="popup-heading">Avise-me quando disponível</h2>
+                <p class="modal-desc">
+                    Cadastre-se para receber notificação em primeira mão assim que o novo lote de <strong id="modal-product-name">{defaultProduct.name}</strong> for liberado.
+                </p>
+
+                <form class="aviseme-form" id="aviseme-form">
+                    <div class="form-field">
+                        <label for="user-name-input" class="field-label">NOME COMPLETO</label>
+                        <input type="text" id="user-name-input" class="field-input" placeholder="Seu nome..." required />
+                    </div>
+
+                    <div class="form-field">
+                        <label for="user-email-input" class="field-label">E-MAIL VIP</label>
+                        <input type="email" id="user-email-input" class="field-input" placeholder="seu.email@exemplo.com" required />
+                    </div>
+
+                    <button type="submit" class="modal-submit-btn">
+                        <span>CONFIRMAR INSCRIÇÃO VIP</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Estado de Sucesso (Oculto por padrão) -->
+            <div class="modal-content-state hidden" id="modal-success-state">
+                <div class="success-icon-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h3 class="popup-title">Inscrição Confirmada!</h3>
+                <p class="modal-desc">
+                    Você foi inserido na lista prioritária da Arttools Pro. Você receberá um e-mail de confirmação com os detalhes de acesso antecipado.
+                </p>
+                <button type="button" class="modal-submit-btn" id="finish-modal-btn">
+                    <span>CONCLUÍDO</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script is:inline>
+    // Interatividade da galeria e do modal na página de produto
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('toggle-more-models-btn');
+        const secondaryRow = document.getElementById('model-secondary-row');
+        
+        if (toggleBtn && secondaryRow) {
+            toggleBtn.addEventListener('click', () => {
+                const isHidden = secondaryRow.classList.contains('hidden');
+                if (isHidden) {
+                    secondaryRow.classList.remove('hidden');
+                    toggleBtn.setAttribute('aria-expanded', 'true');
+                    const textSpan = toggleBtn.querySelector('.btn-toggle-text');
+                    if (textSpan) textSpan.textContent = 'Ver menos modelos';
+                } else {
+                    secondaryRow.classList.add('hidden');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                    const textSpan = toggleBtn.querySelector('.btn-toggle-text');
+                    if (textSpan) textSpan.textContent = 'Ver mais modelos (6)';
+                }
+            });
+        }
+
+        const modal = document.getElementById('aviseme-modal');
+        const openBtn = document.getElementById('open-aviseme-btn');
+        const closeBtn = document.getElementById('close-modal-btn');
+        const finishBtn = document.getElementById('finish-modal-btn');
+        const avisemeForm = document.getElementById('aviseme-form');
+        const formState = document.getElementById('modal-form-state');
+        const successState = document.getElementById('modal-success-state');
+
+        function openModal() {
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+                if (formState && successState) {
+                    formState.classList.remove('hidden');
+                    successState.classList.add('hidden');
+                }
+            }
+        }
+
+        if (openBtn) openBtn.addEventListener('click', openModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (finishBtn) finishBtn.addEventListener('click', closeModal);
+
+        if (avisemeForm) {
+            avisemeForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (formState && successState) {
+                    formState.classList.add('hidden');
+                    successState.classList.remove('hidden');
+                }
+            });
+        }
+    });
+</script>

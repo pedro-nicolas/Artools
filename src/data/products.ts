@@ -1,5 +1,6 @@
 export interface PenProduct {
   id: string;
+  slug: string;
   code: string;
   name: string;
   material: string;
@@ -26,6 +27,7 @@ export interface PenProduct {
 export const products: PenProduct[] = [
   {
     id: 'AR-P1',
+    slug: 'ar-p1',
     code: 'AR|P1',
     name: 'Titanium Stealth Minimalist',
     material: 'Titânio Grau 5',
@@ -65,6 +67,7 @@ export const products: PenProduct[] = [
   },
   {
     id: 'AR-P2',
+    slug: 'ar-p2',
     code: 'AR|P2',
     name: 'Precision Ceramic White',
     material: 'Cerâmica Zircônia',
@@ -100,6 +103,7 @@ export const products: PenProduct[] = [
   },
   {
     id: 'AR-P3',
+    slug: 'ar-p3',
     code: 'AR|P3',
     name: 'Obsidian Matte Black',
     material: 'Fibra de Carbono 3K',
@@ -131,6 +135,7 @@ export const products: PenProduct[] = [
   },
   {
     id: 'AR-P4',
+    slug: 'ar-p4',
     code: 'AR|P4',
     name: 'Ceramic Chrono',
     material: 'Cerâmica Hi-Tech Zircônia',
@@ -169,6 +174,7 @@ export const products: PenProduct[] = [
   },
   {
     id: 'AR-P5',
+    slug: 'ar-p5',
     code: 'AR|P5',
     name: 'Damascus Raw',
     material: 'Aço Padrão Damasco',
@@ -207,6 +213,7 @@ export const products: PenProduct[] = [
   },
   {
     id: 'AR-P6',
+    slug: 'ar-p6',
     code: 'AR|P6',
     name: 'Flux Silver',
     material: 'Titânio Escovado Cirúrgico',
@@ -245,6 +252,7 @@ export const products: PenProduct[] = [
   },
   {
     id: 'AR-P7',
+    slug: 'ar-p7',
     code: 'AR|P7',
     name: 'Bronze Hex',
     material: 'Bronze Naval & Titânio',
@@ -283,6 +291,7 @@ export const products: PenProduct[] = [
   },
   {
     id: 'AR-P8',
+    slug: 'ar-p8',
     code: 'AR|P8',
     name: 'Skeleton Gyro',
     material: 'Chassi Esqueletizado em Titânio',
@@ -321,6 +330,7 @@ export const products: PenProduct[] = [
   },
   {
     id: 'AR-P9',
+    slug: 'ar-p9',
     code: 'AR|P9',
     name: 'Macro Monolith',
     material: 'Monobloco Cirúrgico 316L',
