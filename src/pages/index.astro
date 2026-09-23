@@ -1,32 +1,45 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Button from '../components/Button.astro';
-import TextType from '../components/TextType.astro';
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import TextType from "../components/TextType.astro";
 ---
 
 <Layout
-    title="AR|P1 ArtTools — Caneta de Precisão em Titânio Aeroespacial"
+    title="ArtTools"
     description="Conheça a AR|P1 da ArtTools: a caneta mais tecnológica do mundo. Engenharia giroscópica suíça, chassi em Titânio Grau 5 e ponta cerâmica para máxima precisão."
-    canonicalURL={new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href}
+    canonicalURL={new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
+        .href}
     image="/assets/images/pen_macro_zoom.jpg"
 >
     <!-- 2. PINNED HERO SECTION (Full-Bleed Centerpiece + Pinned Scroll Scrub) -->
     <main>
-        <section class="hero-pin-container" id="hero-pin-container" aria-label="Apresentação da Caneta AR|P1">
-
+        <section
+            class="hero-pin-container"
+            id="hero-pin-container"
+            aria-label="Apresentação da Caneta AR|P1"
+        >
             <!-- Fullscreen Centered Background Video Stage -->
             <div class="hero-video-stage" id="video-stage">
-                <video id="hero-native-video" src="/assets/videos/video2.mp4" playsinline muted preload="auto"></video>
+                <video
+                    id="hero-native-video"
+                    src="/assets/videos/video2.mp4"
+                    playsinline
+                    muted
+                    preload="auto"></video>
             </div>
 
             <!-- Soft Studio Vignette & Text Backdrop (Fades out with scroll) -->
             <div class="hero-lighting-overlay" aria-hidden="true"></div>
-            <div class="hero-text-backdrop" id="text-backdrop" aria-hidden="true"></div>
+            <div
+                class="hero-text-backdrop"
+                id="text-backdrop"
+                aria-hidden="true"
+            >
+            </div>
 
             <!-- Foreground Content: Headline, Subtext, CTAs, Specs (Fades out progressively on scroll) -->
             <div class="hero-foreground-content" id="hero-content">
                 <div class="hero-inner-container">
-
                     <!-- Precision Badge -->
                     <div class="badge-wrapper">
                         <div class="hero-badge">
@@ -49,25 +62,40 @@ import TextType from '../components/TextType.astro';
                             </span>
                         </span>
                         <span class="headline-line">
-                            <span class="headline-inner delay-3">do mundo.</span>
+                            <span class="headline-inner delay-3">do mundo.</span
+                            >
                         </span>
                     </h1>
 
                     <!-- Subtitle -->
                     <p class="hero-subtext">
-                        A <strong>AR|P1</strong> redefine o equilíbrio entre peso, fluxo e design. Feita para
-                        criadores que exigem perfeição milimétrica em cada traço.
+                        A <strong>AR|P1</strong> redefine o equilíbrio entre peso,
+                        fluxo e design. Feita para criadores que exigem perfeição
+                        milimétrica em cada traço.
                     </p>
 
                     <!-- Call-To-Action Buttons -->
                     <div class="hero-actions">
-                        <Button variant="primary" href="#diferenciais" id="btn-comprar">
+                        <Button
+                            variant="primary"
+                            href="#diferenciais"
+                            id="btn-comprar"
+                        >
                             <span>Ver mais</span>
                             <span class="btn-icon-arrow" aria-hidden="true">
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
                                     <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <polyline points="19 12 12 19 5 12"></polyline>
+                                    <polyline points="19 12 12 19 5 12"
+                                    ></polyline>
                                 </svg>
                             </span>
                         </Button>
@@ -90,11 +118,8 @@ import TextType from '../components/TextType.astro';
                             <span class="spec-label">Equilíbrio Neutro</span>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
 
             <div class="hud-bottom-telemetry" aria-hidden="true">
                 <span class="metric-mono">ROTATION:</span>
@@ -108,22 +133,49 @@ import TextType from '../components/TextType.astro';
             </div>
 
             <!-- Right Sidebar Stage HUD -->
-            <aside class="stage-sidebar-hud" aria-label="Controles de Visualização">
+            <aside
+                class="stage-sidebar-hud"
+                aria-label="Controles de Visualização"
+            >
                 <div class="step-indicator">
                     <span class="step-number" id="step-display">01</span>
                     <span class="step-total">/ 03</span>
                 </div>
 
                 <div class="step-nav-arrows">
-                    <Button variant="step-nav" id="nav-prev" ariaLabel="Retroceder rotação">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <Button
+                        variant="step-nav"
+                        id="nav-prev"
+                        ariaLabel="Retroceder rotação"
+                    >
+                        <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
                             <polyline points="18 15 12 9 6 15"></polyline>
                         </svg>
                     </Button>
-                    <Button variant="step-nav" id="nav-next" ariaLabel="Avançar rotação">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <Button
+                        variant="step-nav"
+                        id="nav-next"
+                        ariaLabel="Avançar rotação"
+                    >
+                        <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </Button>
@@ -139,15 +191,17 @@ import TextType from '../components/TextType.astro';
                     <span class="scroll-text-vertical">SCROLL TO EXPLORE</span>
                 </div>
             </aside>
-
         </section>
 
         <!-- ==========================================================================
              8. SEGUNDA DOBRA: ANATOMIA DA PRECISÃO & DIFERENCIAIS TÉCNICOS
              ========================================================================== -->
-        <section class="features-section" id="diferenciais" aria-label="Diferenciais da Caneta AR|P1">
+        <section
+            class="features-section"
+            id="diferenciais"
+            aria-label="Diferenciais da Caneta AR|P1"
+        >
             <div class="features-container">
-
                 <!-- Header Block -->
                 <div class="features-header">
                     <div class="features-badge">
@@ -158,7 +212,11 @@ import TextType from '../components/TextType.astro';
                         Engenharia Suíça.<br />
                         <span class="tech-stroke">
                             <TextType
-                                text={["Precisão Molecular.", "Engenharia Aeroespacial.", "Design Atemporal."]}
+                                text={[
+                                    "Precisão Molecular.",
+                                    "Engenharia Aeroespacial.",
+                                    "Design Atemporal.",
+                                ]}
                                 typingSpeed={75}
                                 pauseDuration={2000}
                                 showCursor={true}
@@ -167,22 +225,22 @@ import TextType from '../components/TextType.astro';
                         </span>
                     </h2>
                     <p class="features-description">
-                        A AR|P1 transcende o ato mecânico da escrita. Forjada através de métodos aeroespaciais
-                        avançados, fundindo ligas balísticas, usinagem giroscópica suíça e cerâmica sinterizada para
-                        perpetuidade absoluta do traço.
+                        A AR|P1 transcende o ato mecânico da escrita. Forjada
+                        através de métodos aeroespaciais avançados, fundindo
+                        ligas balísticas, usinagem giroscópica suíça e cerâmica
+                        sinterizada para perpetuidade absoluta do traço.
                     </p>
                 </div>
 
                 <!-- Two-Column Split Layout -->
                 <div class="features-grid">
-
                     <!-- Coluna Esquerda: Macro Zoom Studio Showcase -->
                     <div class="macro-showcase-card" id="macro-card">
-
                         <!-- Top HUD Bar -->
                         <div class="macro-card-hud">
                             <div class="macro-hud-status">
-                                <span class="badge-dot" aria-hidden="true"></span>
+                                <span class="badge-dot" aria-hidden="true"
+                                ></span>
                                 <span>OPTICAL MACRO SCAN // 0.1MM</span>
                             </div>
                             <span class="macro-hud-badge">MAG: 4.8X</span>
@@ -190,10 +248,13 @@ import TextType from '../components/TextType.astro';
 
                         <!-- Image Viewport with Interactive Lens & Hotspots -->
                         <div class="macro-viewport" id="macro-viewport">
-                            <img src="/assets/images/pen_macro_zoom.jpg"
+                            <img
+                                src="/assets/images/pen_macro_zoom.jpg"
                                 alt="Macro em close-up extremo da ponta e do corpo da caneta AR|P1"
-                                class="macro-base-image" id="macro-base-img"
-                                loading="lazy" />
+                                class="macro-base-image"
+                                id="macro-base-img"
+                                loading="lazy"
+                            />
 
                             <!-- Interactive Optical Magnifier Lens -->
                             <div class="macro-lens" id="macro-lens">
@@ -201,51 +262,76 @@ import TextType from '../components/TextType.astro';
                             </div>
 
                             <!-- Hotspot 01: Ponta Cerâmica -->
-                            <div class="macro-hotspot" style="top: 58%; left: 32%;" tabindex="0"
-                                aria-label="Hotspot: Ponta Cerâmica Ultra-Fina">
+                            <div
+                                class="macro-hotspot"
+                                style="top: 58%; left: 32%;"
+                                tabindex="0"
+                                aria-label="Hotspot: Ponta Cerâmica Ultra-Fina"
+                            >
                                 <div class="hotspot-pin">
                                     <span class="hotspot-radar"></span>
                                     <span>01</span>
                                 </div>
                                 <div class="hotspot-tooltip">
-                                    <span class="hotspot-tag">0.10mm ±0.002mm</span>
-                                    <span class="hotspot-name">Ponta Cerâmica de Zircônia</span>
+                                    <span class="hotspot-tag"
+                                        >0.10mm ±0.002mm</span
+                                    >
+                                    <span class="hotspot-name"
+                                        >Ponta Cerâmica de Zircônia</span
+                                    >
                                 </div>
                             </div>
 
                             <!-- Hotspot 02: Colar Metálico de Titânio -->
-                            <div class="macro-hotspot" style="top: 53%; left: 47%;" tabindex="0"
-                                aria-label="Hotspot: Colar de Titânio Grau 5">
+                            <div
+                                class="macro-hotspot"
+                                style="top: 53%; left: 47%;"
+                                tabindex="0"
+                                aria-label="Hotspot: Colar de Titânio Grau 5"
+                            >
                                 <div class="hotspot-pin">
                                     <span class="hotspot-radar"></span>
                                     <span>02</span>
                                 </div>
                                 <div class="hotspot-tooltip">
-                                    <span class="hotspot-tag">Titanium G5 // CNC 5-Axis</span>
-                                    <span class="hotspot-name">Colar de Amortecimento Micro-Hidráulico</span>
+                                    <span class="hotspot-tag"
+                                        >Titanium G5 // CNC 5-Axis</span
+                                    >
+                                    <span class="hotspot-name"
+                                        >Colar de Amortecimento Micro-Hidráulico</span
+                                    >
                                 </div>
                             </div>
 
                             <!-- Hotspot 03: Corpo Acetinado Gravado -->
-                            <div class="macro-hotspot" style="top: 36%; left: 74%;" tabindex="0"
-                                aria-label="Hotspot: Chassi Aeroespacial Unibody">
+                            <div
+                                class="macro-hotspot"
+                                style="top: 36%; left: 74%;"
+                                tabindex="0"
+                                aria-label="Hotspot: Chassi Aeroespacial Unibody"
+                            >
                                 <div class="hotspot-pin">
                                     <span class="hotspot-radar"></span>
                                     <span>03</span>
                                 </div>
                                 <div class="hotspot-tooltip">
-                                    <span class="hotspot-tag">7075-T6 Alloy // MAO Coating</span>
-                                    <span class="hotspot-name">Gravação a Laser & Toque Acetinado</span>
+                                    <span class="hotspot-tag"
+                                        >7075-T6 Alloy // MAO Coating</span
+                                    >
+                                    <span class="hotspot-name"
+                                        >Gravação a Laser & Toque Acetinado</span
+                                    >
                                 </div>
                             </div>
-
                         </div>
 
                         <!-- Bottom Telemetry Bar -->
                         <div class="macro-card-footer">
                             <div>
                                 <span>POS: </span>
-                                <span class="macro-coord-live" id="macro-coords">X: 520 // Y: 380</span>
+                                <span class="macro-coord-live" id="macro-coords"
+                                    >X: 520 // Y: 380</span
+                                >
                             </div>
                             <div>
                                 <span>CALIBRE: </span>
@@ -253,65 +339,93 @@ import TextType from '../components/TextType.astro';
                             </div>
                             <div>
                                 <span>STATUS: </span>
-                                <span class="macro-coord-live" style="color: var(--accent-green);">CALIBRATED</span>
+                                <span
+                                    class="macro-coord-live"
+                                    style="color: var(--accent-green);"
+                                    >CALIBRATED</span
+                                >
                             </div>
                         </div>
-
                     </div>
 
                     <!-- Coluna Direita: 3 Tópicos Descritivos Apelativos (Minimalistas) -->
                     <div class="features-stack">
-
                         <!-- Card 01: Engenharia Suíça & Micro-Mecânica -->
                         <article class="feature-card" data-card-index="1">
                             <div class="card-meta">
-                                <span class="card-number-badge">01 // ENGENHARIA SUÍÇA</span>
-                                <span class="card-spec-tag">MICRO-MECÂNICA CNC</span>
+                                <span class="card-number-badge"
+                                    >01 // ENGENHARIA SUÍÇA</span
+                                >
+                                <span class="card-spec-tag"
+                                    >MICRO-MECÂNICA CNC</span
+                                >
                             </div>
-                            <h3 class="feature-card-title">Tolerância Micrométrica & Amortecimento</h3>
+                            <h3 class="feature-card-title">
+                                Tolerância Micrométrica & Amortecimento
+                            </h3>
                             <p class="feature-card-text">
-                                Usinagem em <strong>CNC suíço de 5 eixos</strong> com desvio &lt; <strong>0,002
-                                    mm</strong> e micro-amortecimento hidráulico contra vibrações de pulso.
+                                Usinagem em <strong>CNC suíço de 5 eixos</strong
+                                > com desvio &lt; <strong>0,002 mm</strong> e micro-amortecimento
+                                hidráulico contra vibrações de pulso.
                             </p>
                         </article>
 
                         <!-- Card 02: Precisão Molecular & Ponta de Zircônia -->
                         <article class="feature-card" data-card-index="2">
                             <div class="card-meta">
-                                <span class="card-number-badge">02 // PRECISÃO MOLECULAR</span>
-                                <span class="card-spec-tag">CERÂMICA 9.5 MOHS</span>
+                                <span class="card-number-badge"
+                                    >02 // PRECISÃO MOLECULAR</span
+                                >
+                                <span class="card-spec-tag"
+                                    >CERÂMICA 9.5 MOHS</span
+                                >
                             </div>
-                            <h3 class="feature-card-title">Ponta de Zircônia & Fluxo Iônico</h3>
+                            <h3 class="feature-card-title">
+                                Ponta de Zircônia & Fluxo Iônico
+                            </h3>
                             <p class="feature-card-text">
-                                Nanotubos cerâmicos sinterizados a <strong>1.600°C</strong> com dureza <strong>9.5
-                                    Mohs</strong>, garantindo traço contínuo de <strong>0.10 mm</strong> sem desgaste.
+                                Nanotubos cerâmicos sinterizados a <strong
+                                    >1.600°C</strong
+                                > com dureza <strong>9.5 Mohs</strong>,
+                                garantindo traço contínuo de <strong
+                                    >0.10 mm</strong
+                                > sem desgaste.
                             </p>
                         </article>
 
                         <!-- Card 03: Alumínio Aeroespacial G5 & Titânio Monobloco -->
                         <article class="feature-card" data-card-index="3">
                             <div class="card-meta">
-                                <span class="card-number-badge">03 // MATERIAIS AVANÇADOS</span>
-                                <span class="card-spec-tag">ALUMÍNIO 7075-T6 & TITÂNIO G5</span>
+                                <span class="card-number-badge"
+                                    >03 // MATERIAIS AVANÇADOS</span
+                                >
+                                <span class="card-spec-tag"
+                                    >ALUMÍNIO 7075-T6 & TITÂNIO G5</span
+                                >
                             </div>
-                            <h3 class="feature-card-title">Chassi Aeroespacial & Equilíbrio Neutro</h3>
+                            <h3 class="feature-card-title">
+                                Chassi Aeroespacial & Equilíbrio Neutro
+                            </h3>
                             <p class="feature-card-text">
-                                Monobloco em <strong>Titânio G5 e liga 7075-T6</strong> com anodização MAO cerâmica e
-                                centro de gravidade calibrado a <strong>42% da ponta</strong>.
+                                Monobloco em <strong
+                                    >Titânio G5 e liga 7075-T6</strong
+                                > com anodização MAO cerâmica e centro de gravidade
+                                calibrado a <strong>42% da ponta</strong>.
                             </p>
                         </article>
-
                     </div>
-
                 </div>
-
             </div>
         </section>
 
         <!-- ==========================================================================
              9. TERCEIRA DOBRA: EXPERIÊNCIA CINÉTICA & FÍSICA DO TRAÇO (Dobra 3)
              ========================================================================== -->
-        <section class="haptic-section" id="experiencia" aria-label="Experiência Cinética e Física do Traço">
+        <section
+            class="haptic-section"
+            id="experiencia"
+            aria-label="Experiência Cinética e Física do Traço"
+        >
             <!-- Blueprint Grid Pattern Overlay (Monochrome) -->
             <div class="haptic-blueprint-grid" aria-hidden="true"></div>
 
@@ -325,58 +439,91 @@ import TextType from '../components/TextType.astro';
 
                     <h2 class="haptic-title">
                         A Arquitetura do Pensamento.<br />
-                        <span class="tech-stroke">A Física do Traço Perfeito.</span>
+                        <span class="tech-stroke"
+                            >A Física do Traço Perfeito.</span
+                        >
                     </h2>
                     <p class="haptic-description">
-                        Uma experiência sensorial onde a resistência mecânica desaparece. Engenharia projetada para
-                        transferir a intenção criativa diretamente ao papel sem atrito residual, ruído parasita ou
-                        fadiga muscular.
+                        Uma experiência sensorial onde a resistência mecânica
+                        desaparece. Engenharia projetada para transferir a
+                        intenção criativa diretamente ao papel sem atrito
+                        residual, ruído parasita ou fadiga muscular.
                     </p>
                 </div>
 
                 <!-- 3D Tilt Flashlight Glass Cards Matrix (Qualidades & Diferenciais) -->
                 <div class="haptic-cards-grid" id="haptic-grid">
-
                     <!-- Card 01: Reologia & Fluidez Capilar -->
                     <div class="glass-tilt-card" data-tilt-card="1">
-                        <div class="card-flashlight-spot" aria-hidden="true"></div>
+                        <div class="card-flashlight-spot" aria-hidden="true">
+                        </div>
 
                         <div class="glass-card-inner">
                             <div class="glass-card-top">
                                 <div class="glass-card-icon-wrap">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                    <svg
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path
+                                            d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"
+                                        ></path>
                                     </svg>
                                 </div>
-                                <span class="card-telemetry-tag">REOLOGIA // 15° CRÍTICO</span>
+                                <span class="card-telemetry-tag"
+                                    >REOLOGIA // 15° CRÍTICO</span
+                                >
                             </div>
 
                             <div class="glass-card-body">
-                                <span class="glass-card-number">01 // FLUIDEZ CONTÍNUA</span>
-                                <h3 class="glass-card-title">Capilaridade Assistida & Fluxo Iônico</h3>
+                                <span class="glass-card-number"
+                                    >01 // FLUIDEZ CONTÍNUA</span
+                                >
+                                <h3 class="glass-card-title">
+                                    Capilaridade Assistida & Fluxo Iônico
+                                </h3>
                                 <p class="glass-card-text">
-                                    Câmara pressurizada de baixa viscosidade com micro-estrias condutivas. O traço
-                                    mantém uniformidade absoluta em <strong>0.10mm</strong> sem falhas ou borrões, mesmo
-                                    em inclinações de até <strong>15°</strong>.
+                                    Câmara pressurizada de baixa viscosidade com
+                                    micro-estrias condutivas. O traço mantém
+                                    uniformidade absoluta em <strong
+                                        >0.10mm</strong
+                                    > sem falhas ou borrões, mesmo em inclinações
+                                    de até <strong>15°</strong>.
                                 </p>
                             </div>
 
                             <!-- Interactive Flow Visualizer -->
                             <div class="interactive-flow-module">
                                 <div class="flow-header">
-                                    <span class="flow-label">CONDUTIVIDADE DE FLUXO</span>
-                                    <span class="flow-value" id="flow-rate-readout">100% // CONSTANTE</span>
+                                    <span class="flow-label"
+                                        >CONDUTIVIDADE DE FLUXO</span
+                                    >
+                                    <span
+                                        class="flow-value"
+                                        id="flow-rate-readout"
+                                        >100% // CONSTANTE</span
+                                    >
                                 </div>
                                 <div class="flow-track">
-                                    <div class="flow-fill" id="flow-bar-fill"></div>
+                                    <div class="flow-fill" id="flow-bar-fill">
+                                    </div>
                                     <div class="flow-particle flow-p1"></div>
                                     <div class="flow-particle flow-p2"></div>
                                     <div class="flow-particle flow-p3"></div>
                                 </div>
                                 <div class="flow-footer">
                                     <span>VISCOSIDADE DINÂMICA</span>
-                                    <span class="mono-stat" id="flow-visc-readout">1.82 cP (OPTIMIZED)</span>
+                                    <span
+                                        class="mono-stat"
+                                        id="flow-visc-readout"
+                                        >1.82 cP (OPTIMIZED)</span
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -384,52 +531,127 @@ import TextType from '../components/TextType.astro';
 
                     <!-- Card 02: Acústica Silenciosa & Amortecimento -->
                     <div class="glass-tilt-card" data-tilt-card="2">
-                        <div class="card-flashlight-spot" aria-hidden="true"></div>
+                        <div class="card-flashlight-spot" aria-hidden="true">
+                        </div>
 
                         <div class="glass-card-inner">
                             <div class="glass-card-top">
                                 <div class="glass-card-icon-wrap">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                                        <line x1="23" y1="9" x2="17" y2="15"></line>
-                                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                                    <svg
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <polygon
+                                            points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"
+                                        ></polygon>
+                                        <line x1="23" y1="9" x2="17" y2="15"
+                                        ></line>
+                                        <line x1="17" y1="9" x2="23" y2="15"
+                                        ></line>
                                     </svg>
                                 </div>
-                                <span class="card-telemetry-tag">ACÚSTICA // &lt; 12 DB</span>
+                                <span class="card-telemetry-tag"
+                                    >ACÚSTICA // &lt; 12 DB</span
+                                >
                             </div>
 
                             <div class="glass-card-body">
-                                <span class="glass-card-number">02 // SILÊNCIO MECÂNICO</span>
-                                <h3 class="glass-card-title">Mola Hidráulica & Anti-Ressonância</h3>
+                                <span class="glass-card-number"
+                                    >02 // SILÊNCIO MECÂNICO</span
+                                >
+                                <h3 class="glass-card-title">
+                                    Mola Hidráulica & Anti-Ressonância
+                                </h3>
                                 <p class="glass-card-text">
-                                    Micro-pistão de amortecimento interno com elastômero aeroespacial que dissipa a
-                                    energia de impacto. Elimina em <strong>98%</strong> os ruídos de atrito no papel
-                                    para imersão criativa ininterrupta.
+                                    Micro-pistão de amortecimento interno com
+                                    elastômero aeroespacial que dissipa a
+                                    energia de impacto. Elimina em <strong
+                                        >98%</strong
+                                    > os ruídos de atrito no papel para imersão criativa
+                                    ininterrupta.
                                 </p>
                             </div>
 
                             <!-- Interactive Acoustic Spectrum Visualizer -->
                             <div class="interactive-sound-module">
                                 <div class="sound-header">
-                                    <span class="sound-label">ESPECTRO DE IMPACTO HÁPTICO</span>
-                                    <span class="sound-value" id="sound-db-readout">&lt; 11.4 dB (SILENT)</span>
+                                    <span class="sound-label"
+                                        >ESPECTRO DE IMPACTO HÁPTICO</span
+                                    >
+                                    <span
+                                        class="sound-value"
+                                        id="sound-db-readout"
+                                        >&lt; 11.4 dB (SILENT)</span
+                                    >
                                 </div>
-                                <div class="sound-spectrum" id="acoustic-spectrum">
-                                    <div class="spectrum-bar" style="--bar-h: 28%"></div>
-                                    <div class="spectrum-bar" style="--bar-h: 52%"></div>
-                                    <div class="spectrum-bar" style="--bar-h: 78%"></div>
-                                    <div class="spectrum-bar" style="--bar-h: 38%"></div>
-                                    <div class="spectrum-bar" style="--bar-h: 92%"></div>
-                                    <div class="spectrum-bar" style="--bar-h: 58%"></div>
-                                    <div class="spectrum-bar" style="--bar-h: 34%"></div>
-                                    <div class="spectrum-bar" style="--bar-h: 68%"></div>
-                                    <div class="spectrum-bar" style="--bar-h: 44%"></div>
-                                    <div class="spectrum-bar" style="--bar-h: 22%"></div>
+                                <div
+                                    class="sound-spectrum"
+                                    id="acoustic-spectrum"
+                                >
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 28%"
+                                    >
+                                    </div>
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 52%"
+                                    >
+                                    </div>
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 78%"
+                                    >
+                                    </div>
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 38%"
+                                    >
+                                    </div>
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 92%"
+                                    >
+                                    </div>
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 58%"
+                                    >
+                                    </div>
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 34%"
+                                    >
+                                    </div>
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 68%"
+                                    >
+                                    </div>
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 44%"
+                                    >
+                                    </div>
+                                    <div
+                                        class="spectrum-bar"
+                                        style="--bar-h: 22%"
+                                    >
+                                    </div>
                                 </div>
                                 <div class="sound-footer">
                                     <span>ABSORÇÃO HÁPTICA</span>
-                                    <span class="mono-stat" id="sound-freq-readout">0.04μ DISPERSÃO</span>
+                                    <span
+                                        class="mono-stat"
+                                        id="sound-freq-readout"
+                                        >0.04μ DISPERSÃO</span
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -437,27 +659,47 @@ import TextType from '../components/TextType.astro';
 
                     <!-- Card 03: Equilíbrio Giroscópico & 42% Golden Ratio -->
                     <div class="glass-tilt-card" data-tilt-card="3">
-                        <div class="card-flashlight-spot" aria-hidden="true"></div>
+                        <div class="card-flashlight-spot" aria-hidden="true">
+                        </div>
 
                         <div class="glass-card-inner">
                             <div class="glass-card-top">
                                 <div class="glass-card-icon-wrap">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
                                         <circle cx="12" cy="12" r="10"></circle>
-                                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76">
+                                        <polygon
+                                            points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"
+                                        >
                                         </polygon>
                                     </svg>
                                 </div>
-                                <span class="card-telemetry-tag">BIOMECÂNICA // 42% CG</span>
+                                <span class="card-telemetry-tag"
+                                    >BIOMECÂNICA // 42% CG</span
+                                >
                             </div>
 
                             <div class="glass-card-body">
-                                <span class="glass-card-number">03 // EQUILÍBRIO NATURAL</span>
-                                <h3 class="glass-card-title">Centro de Gravidade Áureo & Zero Fadiga</h3>
+                                <span class="glass-card-number"
+                                    >03 // EQUILÍBRIO NATURAL</span
+                                >
+                                <h3 class="glass-card-title">
+                                    Centro de Gravidade Áureo & Zero Fadiga
+                                </h3>
                                 <p class="glass-card-text">
-                                    Massa calibrada no ponto focal da empunhadura entre o indicador e o polegar. Alivia
-                                    a tensão articular em <strong>40%</strong>, garantindo controle anatômico absoluto
+                                    Massa calibrada no ponto focal da
+                                    empunhadura entre o indicador e o polegar.
+                                    Alivia a tensão articular em <strong
+                                        >40%</strong
+                                    >, garantindo controle anatômico absoluto
                                     mesmo após horas consecutivas de traço.
                                 </p>
                             </div>
@@ -465,46 +707,73 @@ import TextType from '../components/TextType.astro';
                             <!-- Interactive 3D Balance Gyro Visualizer -->
                             <div class="interactive-gyro-module">
                                 <div class="gyro-header">
-                                    <span class="gyro-label">CENTRO DE MASSA DINÂMICO</span>
-                                    <span class="gyro-value" id="gyro-cg-readout">42.0% // NEUTRO</span>
+                                    <span class="gyro-label"
+                                        >CENTRO DE MASSA DINÂMICO</span
+                                    >
+                                    <span
+                                        class="gyro-value"
+                                        id="gyro-cg-readout"
+                                        >42.0% // NEUTRO</span
+                                    >
                                 </div>
-                                <div class="gyro-track" id="gyro-track-interactive">
+                                <div
+                                    class="gyro-track"
+                                    id="gyro-track-interactive"
+                                >
                                     <div class="gyro-ruler">
                                         <span>0%</span>
-                                        <span class="ruler-target">42% (ÁUREO)</span>
+                                        <span class="ruler-target"
+                                            >42% (ÁUREO)</span
+                                        >
                                         <span>100%</span>
                                     </div>
                                     <div class="gyro-bar-container">
                                         <div class="gyro-bar-line"></div>
-                                        <div class="gyro-bubble" id="gyro-bubble">
+                                        <div
+                                            class="gyro-bubble"
+                                            id="gyro-bubble"
+                                        >
                                             <span class="bubble-cross"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="gyro-footer">
                                     <span>ESTABILIDADE INERCIAL</span>
-                                    <span class="mono-stat" id="gyro-tilt-readout">0.00° DESVIO</span>
+                                    <span
+                                        class="mono-stat"
+                                        id="gyro-tilt-readout"
+                                        >0.00° DESVIO</span
+                                    >
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-
-
             </div>
         </section>
 
         <!-- ==========================================================================
              10. QUARTA DOBRA: ARTOOLSPRO SIGNATURE SERIES (Dobra 4)
              ========================================================================== -->
-        <section class="signature-section" id="signature-fold" aria-label="ArtoolsPro Signature Series">
-            <span id="comprar" style="position: absolute; top: 0; left: 0; pointer-events: none;"
+        <section
+            class="signature-section"
+            id="signature-fold"
+            aria-label="ArtoolsPro Signature Series"
+        >
+            <span
+                id="comprar"
+                style="position: absolute; top: 0; left: 0; pointer-events: none;"
                 aria-hidden="true"></span>
             <!-- Background Ambient Video Layer -->
             <div class="signature-video-stage" aria-hidden="true">
-                <video class="signature-bg-video" autoplay muted loop playsinline preload="auto">
+                <video
+                    class="signature-bg-video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                >
                     <source src="/assets/videos/output.mp4" type="video/mp4" />
                 </video>
             </div>
@@ -524,23 +793,37 @@ import TextType from '../components/TextType.astro';
 
                     <!-- Top Circular White Badge with Crown Logo & Star -->
                     <div class="card-brand-badge">
-                        <svg class="crown-icon" width="30" height="30" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
+                        <svg
+                            class="crown-icon"
+                            width="30"
+                            height="30"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
                                 d="M3.2 18.5C3.2 18.22 3.42 18 3.7 18H20.3C20.58 18 20.8 18.22 20.8 18.5C20.8 18.78 20.58 19 20.3 19H3.7C3.42 19 3.2 18.78 3.2 18.5Z"
-                                fill="#1C1C1E" stroke="#1C1C1E" stroke-width="0.5" />
-                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                fill="#1C1C1E"
+                                stroke="#1C1C1E"
+                                stroke-width="0.5"></path>
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
                                 d="M3.2 7.8C3.2 7.03 3.83 6.4 4.6 6.4C5.11 6.4 5.57 6.67 5.82 7.09L8.85 12.1L11.09 4.64C11.26 4.05 11.8 3.65 12.42 3.65C13.03 3.65 13.57 4.05 13.74 4.64L15.98 12.09L19.01 7.09C19.26 6.67 19.72 6.4 20.23 6.4C21 6.4 21.63 7.03 21.63 7.8C21.63 8.16 21.49 8.49 21.26 8.74L18.8 16.5H6.03L3.57 8.74C3.34 8.49 3.2 8.16 3.2 7.8Z"
-                                fill="#1C1C1E" />
+                                fill="#1C1C1E"></path>
                             <polygon
                                 points="12.42,9.2 13.04,10.6 14.54,10.8 13.44,11.9 13.74,13.4 12.42,12.6 11.1,13.4 11.4,11.9 10.3,10.8 11.8,10.6"
-                                fill="#FFFFFF" />
+                                fill="#FFFFFF"></polygon>
                         </svg>
                     </div>
 
                     <!-- Brand Name Wordmark: ArttoolsPro -->
                     <h2 class="card-brand-title">
-                        <span class="brand-bold">Arttools</span><span class="brand-light">Pro</span>
+                        <span class="brand-bold">Arttools</span><span
+                            class="brand-light">Pro</span
+                        >
                     </h2>
 
                     <!-- Minimalist Horizontal Divider Line -->
@@ -551,10 +834,25 @@ import TextType from '../components/TextType.astro';
 
                     <!-- Double-Ring Pill CTA Button -->
                     <div class="card-button-wrapper">
-                        <Button variant="signature" href="/catalogo" id="btn-garantir" role="button" ariaLabel="Garantir a caneta no Catálogo">
+                        <Button
+                            variant="signature"
+                            href="/catalogo"
+                            id="btn-garantir"
+                            role="button"
+                            ariaLabel="Garantir a caneta no Catálogo"
+                        >
                             <span>Garantir a caneta</span>
-                            <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                            <svg
+                                class="cta-arrow"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.3"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
@@ -564,24 +862,34 @@ import TextType from '../components/TextType.astro';
             </div>
 
             <!-- Interactive Toast Confirmation -->
-            <div class="signature-toast" id="signature-toast" role="status" aria-live="polite">
+            <div
+                class="signature-toast"
+                id="signature-toast"
+                role="status"
+                aria-live="polite"
+            >
                 <span class="toast-badge" aria-hidden="true"></span>
-                <span>Acesso prioritário garantido! Entraremos em contato em breve.</span>
+                <span
+                    >Acesso prioritário garantido! Entraremos em contato em
+                    breve.</span
+                >
             </div>
         </section>
-
     </main>
 
     <script>
-        const btnComprar = document.getElementById('btn-comprar');
+        const btnComprar = document.getElementById("btn-comprar");
         if (btnComprar) {
-            btnComprar.addEventListener('click', (e) => {
-                const targetId = btnComprar.getAttribute('href');
-                if (targetId && targetId.startsWith('#')) {
+            btnComprar.addEventListener("click", (e) => {
+                const targetId = btnComprar.getAttribute("href");
+                if (targetId && targetId.startsWith("#")) {
                     const targetEl = document.querySelector(targetId);
                     if (targetEl) {
                         e.preventDefault();
-                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        targetEl.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
                     }
                 }
             });
